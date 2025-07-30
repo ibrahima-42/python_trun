@@ -10,18 +10,56 @@
             border-collapse: collapse;
             width: 60%;
             margin-bottom: 30px;
+            margin: auto;
         }
         th, td {
-            border: 1px solid #aaa;
+            border: 1px solid #1e5bdf ;
             padding: 8px;
             text-align: center;
         }
         th {
-            background-color: #ddd;
+            background-color: #1e5bdf;
+            color: white;
         }
         td a {
-            /* text-decoration: none; */
-            color: rgb(0, 68, 255);
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+        td a:nth-child(3) {
+            color: white;
+            background-color: red;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        td a:nth-child(2) {
+            color: white;
+            background-color: blue;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        td a:nth-child(1) {
+            color: white;
+            background-color: green;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        #add-user {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #1e5bdf;
+            width: 150px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin: auto;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
         }
     </style>
 </head>
@@ -43,13 +81,16 @@
                 <td>{{user[1]}}</td>
                 <td>{{user[2]}}</td>
                 <td>
-                    <a href="/update/{{user[0]}}">update</a>
-                    <a href="/delete/{{user[0]}}">delete</a>
+                    <a href="/detail/user/{{user[0]}}">detail</a>
+                    <a href="/update/user/{{user[0]}}">Update</a>
+                    <a href="/delete/user/{{user[0]}}" onclick="confirmDelete('{{user[0]}}')">Delete</a>
                 </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
+
+    <a id="add-user" href="/add/user">Ajouter un utilisateur</a>
 
     <h1>liste des posts</h1>
     <table>
@@ -72,13 +113,21 @@
                 <td>{{post[3]}}</td>
                 <td>{{post[4]}}</td>
                 <td>
-                    <a href="/update/{{post[0]}}">Update</a>
-                    <a href="/delete/{{post[0]}}">Delete</a>
+                    <a href="/update/post/{{post[0]}}">Update</a>
+                    <a href="/delete/post/{{post[0]}}" onclick="confirmDelete('{{post[0]}}')">Delete</a>
                 </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
-    
+    <a id="add-user" href="/add/post">Ajouter un post</a>
 </body>
+
+<script>
+    function confirmDelete(id) {
+        if (confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) {
+            window.location.href = "/delete/" + id;
+        }
+    }
+</script>
 </html>

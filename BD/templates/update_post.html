@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        form button {
+            padding: 10px;
+            background-color: #0237a9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #052260;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update post</h1>
+    <form action="/update/post/{{post[0]}}" method="POST">
+        <label for="titre">Titre</label>
+        <input type="text" name="titre" placeholder="Titre" required value="{{post[1]}}">
+        <label for="contenu">Contenu</label>
+        <input type="text" name="contenu" placeholder="Contenu" required value="{{post[2]}}">
+        <label for="user_id">Auteur</label>
+        <select name="user_id" id="user_id">
+            {%for user in users %}
+            <option value="{{user[0]}}">
+                {{user[1]}} {{user[2]}}
+            </option>
+            {%endfor%}
+        </select>
+        <button type="submit">Update post</button>
+    </form>
+</body>
+</html>
