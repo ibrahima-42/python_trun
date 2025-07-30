@@ -1,0 +1,23 @@
+<etudiants>
+    <etudiant>
+        <id>1</id>
+        <nom>Diagne</nom>
+        <prenom>lilou</prenom>
+        <age>100</age>
+        <filiere>economie</filiere>
+    </etudiant>
+    <etudiant>
+        <id>2</id>
+        <nom>legende</nom>
+        <prenom>LG</prenom>
+        <age>00</age>
+        <filiere>front-end</filiere>
+    </etudiant>
+    <etudiant>
+        <id>3</id>
+        <nom>jamal</nom>
+        <prenom>musiala</prenom>
+        <age>22</age>
+        <filiere>foot</filiere>
+    </etudiant>
+<etudiant><id>7</id><nom>franck</nom><prenom>ribery</prenom><age>39</age><filiere>foot</filiere></etudiant><etudiant><id>10</id><nom>arjen</nom><prenom>robben</prenom><age>40</age><filiere>foot</filiere></etudiant><etudiant><id>31</id><nom>bastian</nom><prenom>schweinsteiger</prenom><age>39</age><filiere>foot</filiere></etudiant></etudiants>

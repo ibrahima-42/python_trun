@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+        td a {
+            /* text-decoration: none; */
+            color: rgb(0, 68, 255);
+        }
+    </style>
+</head>
+<body>
+    <h1>liste des utilisateur</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for user in users %}
+            <tr>
+                <td>{{user[0]}}</td>
+                <td>{{user[1]}}</td>
+                <td>{{user[2]}}</td>
+                <td>
+                    <a href="/update/{{user[0]}}">update</a>
+                    <a href="/delete/{{user[0]}}">delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    <h1>liste des posts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for post in posts %}
+            <tr>
+                <td>{{post[0]}}</td>
+                <td>{{post[1]}}</td>
+                <td>{{post[2]}}</td>
+                <td>{{post[3]}}</td>
+                <td>{{post[4]}}</td>
+                <td>
+                    <a href="/update/{{post[0]}}">Update</a>
+                    <a href="/delete/{{post[0]}}">Delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    
+</body>
+</html>
