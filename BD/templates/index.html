@@ -83,7 +83,7 @@
                 <td>
                     <a href="/detail/user/{{user[0]}}">detail</a>
                     <a href="/update/user/{{user[0]}}">Update</a>
-                    <a href="/delete/user/{{user[0]}}" onclick="confirmDelete('{{user[0]}}')">Delete</a>
+                    <a href="/delete/user/{{user[0]}}" onclick="return confirmDelete('{{user[0]}}')">Delete</a>
                 </td>
             </tr>
             {%endfor%}
@@ -114,7 +114,7 @@
                 <td>{{post[4]}}</td>
                 <td>
                     <a href="/update/post/{{post[0]}}">Update</a>
-                    <a href="/delete/post/{{post[0]}}" onclick="confirmDelete('{{post[0]}}')">Delete</a>
+                    <a href="/delete/post/{{post[0]}}" onclick=" return confirmDelete('{{post[0]}}')">Delete</a>
                 </td>
             </tr>
             {%endfor%}
@@ -127,7 +127,9 @@
     function confirmDelete(id) {
         if (confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) {
             window.location.href = "/delete/" + id;
+            return true;
         }
+        return false;
     }
 </script>
 </html>
