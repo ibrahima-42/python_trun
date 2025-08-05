@@ -3,8 +3,12 @@ import sqlite3
 
 app = Flask(__name__)
 
-@app.route("/liste")
+@app.route("/")
 def home():
+    return render_template("login.html")
+
+@app.route("/liste")
+def liste():
     conn = sqlite3.connect("user.db")
     cursor = conn.cursor()
     
@@ -148,6 +152,47 @@ def delete_post(id) :
     conn.commit()
     conn.close()
     return redirect("/liste")
+
+#function register
+@app.route("/register", methods=["GET", "POST"])
+def register() :
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+    if request.method == "POST" :
+        try :
+            nom = request.form["nom"]
+            prenom = request.form["prenom"]
+            email = request.form["email"]
+            password = request.form["password"]
+            cursor.execute("""INSERT INTO user (nom, prenom, email, password) VALUES (?, ?, ?, ?)""", (nom, prenom, email, password))
+            conn.commit()
+            print("user ajouter avec succes")
+        except Exception as e :
+            print("error : " +str(e))
+        return redirect("/login")   
+    return render_template("register.html")
+
+#login function
+@app.route("/login", methods=["GET", "POST"])
+def login() :
+    conn = sqlite3.connect("user.db")
+    cursor = conn.cursor()
+    if request.method == "POST" :
+        try :
+            email = request.form["email"]
+            password = request.form["password"]
+            cursor.execute("""SELECT * FROM user WHERE email = ? AND password = ?""", (email, password))
+            user = cursor.fetchone()
+            conn.commit()
+            if user :
+                print("user connecté avec succes")
+            else :
+                print("user non trouve")
+        except Exception as e :
+            print("error : " +str(e))
+        return redirect("/liste")   
+    return render_template("login.html")
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
