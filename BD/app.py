@@ -141,7 +141,6 @@ def update_post(id) :
     else :
         return jsonify({"message" : "Post non trouver"}), 404
 
-
 #delete post function
 @app.route("/delete/post/<id>", methods=["GET", "POST"])
 def delete_post(id) :

@@ -11,6 +11,7 @@ word = input("donner un mot :")
 print(
     "le nombre de voyelle dans le mot " 
     + word + " est :" +str(compter_voyelle(word))
+    
     + "\n"
     + " avec comme 1er lettre : " + word[0]
     + "\n"
