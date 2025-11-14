@@ -3,7 +3,7 @@ import request
 
 class ProductAPI(http.Controller):
 
-    @http.route('/api/product/pricelist', type='json', auth='user', methods=['POST'])
+    @app.route('/api/product/pricelist', type='json', auth='user', methods=['POST'])
     def get_default_pricelist(self, **kwargs):
         partner_id = kwargs.get('partner_id')
         if not partner_id:
