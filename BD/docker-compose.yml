@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "6874:6874"
+    volumes:
+      - .:/BD
+      - ./user.db:/BD/user.db
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    restart: unless-stopped

@@ -44,11 +44,9 @@
 <body>
     <h1>Ajouter un post</h1>
     <form action="/add/post" method="POST">
-        <select name="user_id" id="user_id">
-            {%for user in users %}
-            <option value="{{user[0]}}">{{user[1]}} {{user[2]}}</option>
-            {%endfor%}
-        </select>
+        {% for user in users %}
+        <input type="text" name="user_id" placeholder={{user[0]}} value={{user[0] | safe}}>
+        {% endfor %}
         <input type="text" name="titre" placeholder="Titre" required>
         <input type="text" name="contenu" placeholder="Contenu" required>
         <button type="submit">Ajouter</button>
